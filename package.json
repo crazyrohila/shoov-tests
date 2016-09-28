@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "shoov-webdrivercss": "https://github.com/crazyrohila/shoov-webdrivercss#master"
+  }
+}

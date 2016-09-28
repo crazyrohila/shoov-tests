@@ -69,25 +69,27 @@ describe('Homepage', function() {
         exclude: [],
         remove: [],
         hide: [],
-        screenWidth: selectedCaps == 'chrome' ? [1200] : undefined,
+        screenWidth: selectedCaps == 'chrome' ? [640, 900, 1200] : undefined,
       }, resultsCallback)
       .call(done);
   });
 
   it('should show the home page after login',function(done) {
     client
-      .url(baseUrl + '/user')
+      .url(baseUrl + '/userr')
       .setValue('#user-login #edit-name', 'admin')
       .setValue('#user-login #edit-pass', 'best')
       .click('#user-login #edit-submit')
+
       .then(function(res) {
         client
+          .url(baseUrl + '/about-mee')
           .webdrivercss(testName + 'login-home#page', {
             name: '1',
             exclude: [],
             remove: [],
             hide: [],
-            screenWidth: selectedCaps == 'chrome' ? [1200] : undefined,
+            screenWidth: selectedCaps == 'chrome' ? [600, 1200] : undefined,
           }, resultsCallback)
           .call(done);
       });
@@ -113,7 +115,7 @@ describe('User', function() {
 
   it('should show the login page',function(done) {
     client
-      .url(baseUrl + '/user')
+      .url(baseUrl + '/userr')
       .webdrivercss(testName + 'user#page', {
         name: '2',
         exclude: [],
