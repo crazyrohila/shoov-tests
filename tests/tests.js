@@ -42,7 +42,7 @@ var caps = selectedCaps ? capsConfig[selectedCaps] : undefined;
 var providerPrefix = process.env.PROVIDER_PREFIX ? process.env.PROVIDER_PREFIX + '-' : '';
 var testName = selectedCaps ? providerPrefix + selectedCaps : providerPrefix + 'default';
 
-var baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'http://local.probe.me';
+var baseUrl = process.env.BASE_URL ? process.env.BASE_URL : 'http://yoursite.me';
 
 var resultsCallback = process.env.DEBUG ? console.log : shoovWebdrivercss.processResults;
 
@@ -76,14 +76,13 @@ describe('Homepage', function() {
 
   it('should show the home page after login',function(done) {
     client
-      .url(baseUrl + '/userr')
-      .setValue('#user-login #edit-name', 'admin')
-      .setValue('#user-login #edit-pass', 'best')
+      .url(baseUrl + '/user')
+      .setValue('#user-login #edit-name', 'ADMIN')
+      .setValue('#user-login #edit-pass', 'XXXXX')
       .click('#user-login #edit-submit')
-
       .then(function(res) {
         client
-          .url(baseUrl + '/about-mee')
+          .url(baseUrl + '/manager-content')
           .webdrivercss(testName + 'login-home#page', {
             name: '1',
             exclude: [],
@@ -115,7 +114,7 @@ describe('User', function() {
 
   it('should show the login page',function(done) {
     client
-      .url(baseUrl + '/userr')
+      .url(baseUrl + '/user')
       .webdrivercss(testName + 'user#page', {
         name: '2',
         exclude: [],
